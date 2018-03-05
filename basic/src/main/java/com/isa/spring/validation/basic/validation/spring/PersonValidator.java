@@ -1,4 +1,4 @@
-package com.isa.spring.validation.basic.validation;
+package com.isa.spring.validation.basic.validation.spring;
 
 import com.isa.spring.validation.basic.model.Person;
 import org.springframework.validation.Errors;
