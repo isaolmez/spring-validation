@@ -1,4 +1,4 @@
-package com.isa.spring.validation.basic;
+package com.isa.spring.validation.basic.formatter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
