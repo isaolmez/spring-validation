@@ -14,6 +14,6 @@ public class Person {
 
     private String name;
 
-    @Age(code = "InvalidInput")
+    @Age(code = "InvalidInputForPerson")
     private int age;
 }

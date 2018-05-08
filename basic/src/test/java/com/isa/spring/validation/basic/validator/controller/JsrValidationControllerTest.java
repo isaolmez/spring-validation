@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.isa.spring.validation.basic.AbstractControllerTest;
 import com.isa.spring.validation.basic.validator.Application;
 import com.isa.spring.validation.basic.validator.model.Person;
+import com.isa.spring.validation.basic.validator.model.PersonWithThrow;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,5 +105,20 @@ public class JsrValidationControllerTest extends AbstractControllerTest {
                 .content(new ObjectMapper().writeValueAsString(person)))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string(EMPTY));
+    }
+
+    @Test
+    public void shouldReturnBadRequest_ForCreateWithThrow() throws Exception {
+        PersonWithThrow person = PersonWithThrow.builder()
+                .name("test")
+                .age(-1)
+                .build();
+
+        mockMvc.perform(post("/validator/jsr/createWithThrow")
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(new ObjectMapper().writeValueAsString(person)))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").isNotEmpty())
+                .andExpect(jsonPath("$.message").isNotEmpty());
     }
 }

@@ -1,5 +1,6 @@
 package com.isa.spring.validation.basic.converter.controller;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -23,6 +24,13 @@ public class ConverterControllerTest extends AbstractControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Test
+    public void shouldConvertWithBuiltin() throws Exception {
+        mockMvc.perform(get("/converter/builtin")
+                .param("profession", EMPTY))
+                .andExpect(status().isOk());
+    }
 
     @Test
     public void shouldConvert() throws Exception {

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,11 @@ public class ConverterController {
     @Autowired
     public ConverterController(ConversionService conversionService) {
         this.conversionService = conversionService;
+    }
+
+    @GetMapping(path = "/builtin")
+    public String builtin(@RequestParam("profession") Profession profession) {
+        return String.valueOf(profession);
     }
 
     @PostMapping(path = "/basic",

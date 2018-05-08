@@ -37,7 +37,7 @@ public class JsrValidationController {
     }
 
     // Handled by @ExceptionHandler(InvalidInputException.class)
-    @PostMapping(path = "/createThrow", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/createWithThrow", consumes = MediaType.APPLICATION_JSON_VALUE)
     public PersonWithThrow createWithThrowing(@RequestBody @Valid PersonWithThrow person) {
         return person;
     }
